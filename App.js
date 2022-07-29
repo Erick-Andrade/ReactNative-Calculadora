@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function App() {
   // Mapeamento de teclas
@@ -25,10 +25,10 @@ export default function App() {
         setCurrentNumber((fistNumber - lastNumber).toString())
         return
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString())
+        setCurrentNumber((fistNumber * lastNumber).toString())
         return
       case '/': 
-        setCurrentNumber((fistNumber - lastNumber).toString())
+        setCurrentNumber((fistNumber / lastNumber).toString())
         return
     }
   }
@@ -52,6 +52,7 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        setCurrentNumber((currentNumber * -1).toString());
         return
     }
 
@@ -61,7 +62,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
       {/* Area onde o resultado é exibido */}
       <View style={styles.results}>
         <Text style={styles.historyText}>{lastNumber}</Text>
